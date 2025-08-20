@@ -100,9 +100,9 @@ internal static class BuildHelper
 		if (resourceInformation.Settings.EmitFormatMethods)
 		{
 			getStringMethod += $$$$"""
-{{{{memberIndent}}}}private string GetResourceString(string resourceKey, string[]? formatterNames)
+{{{{memberIndent}}}}private string GetValue(string resourceKey, string[]? formatterNames)
 {{{{memberIndent}}}}{
-{{{{memberIndent}}}}    var value = GetResourceString(resourceKey);
+{{{{memberIndent}}}}    var value = GetValue(resourceKey);
 {{{{memberIndent}}}}    if (formatterNames == null) return value;
 {{{{memberIndent}}}}    for (var i = 0; i < formatterNames.Length; i++)
 {{{{memberIndent}}}}    {
@@ -126,12 +126,17 @@ internal static class BuildHelper
 {{memberIndent}}/// <summary>The default instance of <see cref="{{resourceInformation.ClassName}}"/></summary>
 {{memberIndent}}public static {{resourceInformation.ClassName}} Values => _default ??= new {{resourceInformation.ClassName}}();
 
+{{memberIndent}}/// <summary>Gets a value using a key, like a dictionary.</summary>
+{{memberIndent}}/// <param name="key">The name of the key to retrieve the value.</param>
+{{memberIndent}}/// <returns>The localized value.</returns>
+{{memberIndent}}public string this[string key] => GetValue(key);
+
 {{memberIndent}}public delegate void CultureChangedDelegate(global::System.Globalization.CultureInfo? oldCulture, global::System.Globalization.CultureInfo? newCulture);
 {{memberIndent}}/// <summary>Called after the <see cref="Culture"/> was updated. Provides previous culture and the newly set culture</summary>
 {{memberIndent}}public event CultureChangedDelegate? CultureChanged;
 
 {{memberIndent}}private global::System.Globalization.CultureInfo? _culture;
-{{memberIndent}}/// <summary>Get or set the Culture to be used for all resource lookups issued by this strongly typed resource class.</summary>
+{{memberIndent}}/// <summary>Gets or sets the Culture to be used for all resource lookups issued by this strongly typed resource class.</summary>
 {{memberIndent}}public System.Globalization.CultureInfo? Culture
 {{memberIndent}}{
 {{memberIndent}}    get => _culture;
@@ -166,11 +171,11 @@ internal static class BuildHelper
 {{memberIndent}}    }
 {{memberIndent}}}
 
-{{memberIndent}}/// <summary>Get a resource of the <see cref="ResourceManager"/> with the configured <see cref="Culture"/> as a string</summary>
+{{memberIndent}}/// <summary>Gets a resource of the <see cref="ResourceManager"/> with the configured <see cref="Culture"/> as a string</summary>
 {{memberIndent}}/// <param name="resourceKey">The name of the resource to get</param>
 {{memberIndent}}/// <returns>Returns the resource value as a string or the <paramref name="resourceKey"/> if it could not be found</returns>
 {{memberIndent}}[global::System.Runtime.CompilerServices.MethodImpl(global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-{{memberIndent}}public string GetResourceString(string resourceKey)
+{{memberIndent}}public string GetValue(string resourceKey)
 {{memberIndent}}{
 {{memberIndent}}    try
 {{memberIndent}}    {
@@ -305,7 +310,11 @@ internal static class BuildHelper
 			);
 			keysMembersBuilder.AppendLine(
 				$"""
-{memberIndent}/// <summary>Gets the name of <see cref="Keys.@{propertyIdentifier}"/>.</summary>
+{memberIndent}/// <summary>Gets the name of <see cref="Keys.@{propertyIdentifier}"/>.<list type="table">
+{memberIndent}/// <item><b>{resourceInformation.Settings.DefaultLang}</b>: {GetTrimmedDocComment(
+					"description",
+					value
+				)}</item>
 """
 			);
 
@@ -340,13 +349,17 @@ internal static class BuildHelper
 					$"{memberIndent}/// <item><b>{entry.Key}</b>: {GetTrimmedDocComment("description", otherValue)}</item>"
 				);
 
+				keysMembersBuilder.AppendLine(
+					$"{memberIndent}/// <item><b>{entry.Key}</b>: {GetTrimmedDocComment("description", otherValue)}</item>"
+				);
+
 			}
 
 			membersBuilder.AppendLine(
 				$"""
 {memberIndent}/// <item><description>⠀</description></item>
 {memberIndent}/// </list></summary>
-{memberIndent}public string @{propertyIdentifier} => GetResourceString(Keys.@{propertyIdentifier});
+{memberIndent}public string @{propertyIdentifier} => GetValue(Keys.@{propertyIdentifier});
 """
 			);
 
@@ -361,6 +374,7 @@ internal static class BuildHelper
 
 			keysMembersBuilder.AppendLine(
 				$"""
+{memberIndent}/// </list></summary>
 {memberIndent}    public const string @{propertyIdentifier} = @"{name}";
 """
 			);
@@ -377,7 +391,7 @@ internal static class BuildHelper
 		var methodParameters = resourceString.GetMethodParameters();
 		var arguments = resourceString.GetJoinedArguments();
 		var argumentNames = resourceString.UsingNamedArgs
-			? $"GetResourceString(@{propertyIdentifier}, new[] {{ {resourceString.GetArgumentNames()} }})"
+			? $"GetValue(@{propertyIdentifier}, new[] {{ {resourceString.GetArgumentNames()} }})"
 			: $"@{propertyIdentifier}";
 		var paramDocs = string.Join(
 			"\n",
