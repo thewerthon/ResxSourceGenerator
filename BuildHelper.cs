@@ -160,7 +160,7 @@ internal static class BuildHelper
 {{memberIndent}}            var hostResourceBaseName = hostAssembly.GetName().Name + ".{{resourceInformation.Settings.RelativeDir?.TrimEnd('\\') ?? "Resources"}}.{{resourceInformation.ResourceName}}";
 {{memberIndent}}            return new global::System.Resources.ResourceManager(hostResourceBaseName, hostAssembly);
 {{memberIndent}}        }
-{{memberIndent}}        catch (global::System.Resources.MissingManifestResourceException) { }
+{{memberIndent}}        catch { }
 {{memberIndent}}
 {{memberIndent}}        return null;
 {{memberIndent}}    }
@@ -170,7 +170,17 @@ internal static class BuildHelper
 {{memberIndent}}/// <param name="resourceKey">The name of the resource to get</param>
 {{memberIndent}}/// <returns>Returns the resource value as a string or the <paramref name="resourceKey"/> if it could not be found</returns>
 {{memberIndent}}[global::System.Runtime.CompilerServices.MethodImpl(global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-{{memberIndent}}public string GetResourceString(string resourceKey) => HostResourceManager?.GetString(resourceKey, Culture) ?? ResourceManager.GetString(resourceKey, Culture) ?? resourceKey;
+{{memberIndent}}public string GetResourceString(string resourceKey)
+{{memberIndent}}{
+{{memberIndent}}    try
+{{memberIndent}}    {
+{{memberIndent}}        return HostResourceManager?.GetString(resourceKey, Culture) ?? ResourceManager.GetString(resourceKey, Culture) ?? resourceKey;
+{{memberIndent}}    }
+{{memberIndent}}    catch { }
+{{memberIndent}}
+{{memberIndent}}    return ResourceManager.GetString(resourceKey, Culture) ?? resourceKey;
+{{memberIndent}}}
+
 {{getStringMethod}}
 {{members}}
 {{memberIndent}}/// <summary>All keys contained in <see cref="{{resourceInformation.ClassName}}"/></summary>
@@ -323,7 +333,7 @@ internal static class BuildHelper
 							messageArgs: [name, entry.Key.DisplayName, entry.Key]
 						)
 					);
-					otherValue = "n/a";
+					otherValue = "[missing]";
 				}
 
 				membersBuilder.AppendLine(
