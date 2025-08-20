@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ResxSourceGenerator</id>
+    <version>1.20.0</version>
+    <authors>ResxSourceGenerator</authors>
+    <description>A SourceGenerator generating a singleton resource class for .resx files</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.CodeAnalysis.CSharp" version="4.11.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Workspaces" version="4.11.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.6.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Development\ResxSourceGenerator\bin\Release\netstandard2.0\ResxSourceGenerator.dll" target="analyzers\dotnet\cs\ResxSourceGenerator.dll" />
+    <file src="C:\Development\ResxSourceGenerator\buildTransitive\ResxSourceGenerator.props" target="buildTransitive\ResxSourceGenerator.props" />
+    <file src="C:\Development\ResxSourceGenerator\buildTransitive\ResxSourceGenerator.targets" target="buildTransitive\ResxSourceGenerator.targets" />
+    <file src="C:\Development\ResxSourceGenerator\README.md" target="\README.md" />
+  </files>
+</package>

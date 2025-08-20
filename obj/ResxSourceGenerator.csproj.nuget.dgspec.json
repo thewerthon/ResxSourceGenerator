@@ -1,0 +1,161 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Development\\ResxSourceGenerator\\ResxSourceGenerator.csproj": {}
+  },
+  "projects": {
+    "C:\\Development\\ResxSourceGenerator\\ResxSourceGenerator.csproj": {
+      "version": "1.20.0",
+      "restore": {
+        "projectUniqueName": "C:\\Development\\ResxSourceGenerator\\ResxSourceGenerator.csproj",
+        "projectName": "ResxSourceGenerator",
+        "projectPath": "C:\\Development\\ResxSourceGenerator\\ResxSourceGenerator.csproj",
+        "packagesPath": "C:\\Users\\ÉwertonFerreira\\.nuget\\packages\\",
+        "outputPath": "C:\\Development\\ResxSourceGenerator\\obj\\",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "CentralPackageTransitivePinningEnabled": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ÉwertonFerreira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1507"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.CodeAnalysis.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.11.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[4.11.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": {
+              "target": "Package",
+              "version": "[4.11.0, )",
+              "versionCentrallyManaged": true
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "PolySharp": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.15.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Avalonia": "11.3.1",
+            "Avalonia.Controls.WebView": "11.3.0",
+            "Avalonia.Desktop": "11.3.1",
+            "Avalonia.Diagnostics": "11.3.1",
+            "Avalonia.Fonts.Inter": "11.3.1",
+            "Avalonia.Headless": "11.3.1",
+            "Avalonia.Headless.XUnit": "11.3.1",
+            "Avalonia.Themes.Fluent": "11.3.1",
+            "BenchmarkDotNet": "0.14.0",
+            "CommunityToolkit.Mvvm": "8.4.0",
+            "coverlet.collector": "6.0.4",
+            "Easy.MessageHub": "5.1.0",
+            "FluentAssertions": "[7.1.0]",
+            "FluentAssertions.Reactive": "0.2.0",
+            "FluentAvaloniaUI": "2.3.0",
+            "Glob": "1.1.9",
+            "MediatR": "12.4.1",
+            "MessagePipe": "1.8.1",
+            "Microsoft.CodeAnalysis": "4.11.0",
+            "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.11.0",
+            "Microsoft.CodeAnalysis.CSharp.Analyzer.Testing": "1.1.2",
+            "Microsoft.CodeAnalysis.CSharp.CodeFix.Testing": "1.1.2",
+            "Microsoft.CodeAnalysis.CSharp.CodeRefactoring.Testing": "1.1.2",
+            "Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing": "1.1.2",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.11.0",
+            "Microsoft.Extensions.DependencyInjection": "9.0.6",
+            "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.6",
+            "Microsoft.Extensions.Logging": "9.0.6",
+            "Microsoft.Extensions.Logging.Abstractions": "9.0.6",
+            "Microsoft.Extensions.Logging.Console": "9.0.6",
+            "Microsoft.NET.Test.Sdk": "17.14.1",
+            "MirrorSharp.AspNetCore": "4.0.0",
+            "MirrorSharp.Common": "3.0.10",
+            "NSubstitute": "5.3.0",
+            "NSubstitute.Analyzers.CSharp": "1.0.17",
+            "PolySharp": "1.15.0",
+            "Prism.Core": "9.0.537",
+            "PubSub": "4.0.2",
+            "Serilog.Sinks.XUnit": "3.0.19",
+            "Shouldly": "4.3.0",
+            "System.Linq.Async": "6.0.1",
+            "System.Reactive": "6.0.1",
+            "System.Reactive.Linq": "6.0.1",
+            "System.Threading.Tasks.Extensions": "4.6.3",
+            "TUnit": "0.20.18",
+            "Verify.Http": "6.5.0",
+            "Verify.SourceGenerators": "2.5.0",
+            "Verify.Xunit": "30.1.0",
+            "WebViewControl-Avalonia": "3.120.10",
+            "xunit": "2.9.3",
+            "Xunit.Combinatorial": "1.6.24",
+            "xunit.runner.visualstudio": "3.1.1"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

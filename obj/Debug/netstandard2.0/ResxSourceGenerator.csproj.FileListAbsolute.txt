@@ -1,0 +1,10 @@
+C:\Development\ResxSourceGenerator\bin\Debug\netstandard2.0\ResxSourceGenerator.deps.json
+C:\Development\ResxSourceGenerator\bin\Debug\netstandard2.0\ResxSourceGenerator.dll
+C:\Development\ResxSourceGenerator\bin\Debug\netstandard2.0\ResxSourceGenerator.pdb
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.csproj.AssemblyReference.cache
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.AssemblyInfoInputs.cache
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.AssemblyInfo.cs
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.csproj.CoreCompileInputs.cache
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.dll
+C:\Development\ResxSourceGenerator\obj\Debug\netstandard2.0\ResxSourceGenerator.pdb
