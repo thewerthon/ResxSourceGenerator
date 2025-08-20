@@ -13,7 +13,7 @@ using Microsoft.CodeAnalysis.Text;
 internal static class BuildHelper
 {
 	private const int MaxDocCommentLength = 256;
-	private const string HelpLinkUri = "https://github.com/thewerthon/ResxSourceGenerator/README.md#Diagnostics";
+	private const string HelpLinkUri = "https://github.com/thewerthon/ResxSourceGenerator/tree/main/README.md#Diagnostics";
 
 	private static readonly DiagnosticDescriptor EmptyWarning = new(
 		id: "ResX001",
