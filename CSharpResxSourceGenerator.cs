@@ -229,7 +229,7 @@ internal sealed class CSharpResxSourceGenerator : IIncrementalGenerator
 				{
 					var isChildFile = BuildHelper.IsChildFile(
 						x.ResourceName,
-						allFiles.Select(r => r.ResourceName),
+						[resource.ResourceName],
 						out CultureInfo? cultureInfo
 					);
 					return !isChildFile ? ((CultureInfo?, AdditionalText)?)null : (cultureInfo, x.ResourceFile);
