@@ -162,21 +162,20 @@ internal static class BuildHelper
 
 {{memberIndent}}///<summary>Returns the cached ResourceManager instance for the host application, used for overrides.</summary>
 {{memberIndent}}[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-{{memberIndent}}public global::System.Resources.ResourceManager? HostResourceManager
+{{memberIndent}}public global::System.Resources.ResourceManager? HostResourceManager => hostResourceManagerLazy.Value;
+
+{{memberIndent}}private static readonly global::System.Lazy<global::System.Resources.ResourceManager?> hostResourceManagerLazy = new global::System.Lazy<global::System.Resources.ResourceManager?>(() =>
 {{memberIndent}}{
-{{memberIndent}}    get
-{{memberIndent}}    {
-{{memberIndent}}        try
-{{memberIndent}}        {
-{{memberIndent}}            var hostAssembly = global::System.Reflection.Assembly.GetEntryAssembly() ?? global::System.Reflection.Assembly.GetExecutingAssembly();
-{{memberIndent}}            var hostResourceBaseName = hostAssembly.GetName().Name + ".{{resourceInformation.Settings.RelativeDir?.TrimEnd('\\') ?? "Resources"}}.{{resourceInformation.ResourceName}}";
-{{memberIndent}}            return new global::System.Resources.ResourceManager(hostResourceBaseName, hostAssembly);
-{{memberIndent}}        }
-{{memberIndent}}        catch { }
+{{memberIndent}}    var hostAssembly = global::System.Reflection.Assembly.GetEntryAssembly() ?? global::System.Reflection.Assembly.GetExecutingAssembly();
+{{memberIndent}}    var hostResourceBaseName = hostAssembly.GetName().Name + ".{{resourceInformation.Settings.RelativeDir?.TrimEnd('\\') ?? "Resources"}}.{{resourceInformation.ResourceName}}";
 {{memberIndent}}
-{{memberIndent}}        return null;
+{{memberIndent}}    if (hostAssembly.GetManifestResourceNames().Contains(hostResourceBaseName + ".resources"))
+{{memberIndent}}    {
+{{memberIndent}}        return new global::System.Resources.ResourceManager(hostResourceBaseName, hostAssembly);
 {{memberIndent}}    }
-{{memberIndent}}}
+{{memberIndent}}
+{{memberIndent}}    return null;
+{{memberIndent}}});
 
 {{memberIndent}}/// <summary>Gets a resource of the <see cref="ResourceManager"/> with the configured <see cref="Culture"/> as a string.</summary>
 {{memberIndent}}/// <param name="name">The name of the resource to get.</param>
@@ -188,7 +187,7 @@ internal static class BuildHelper
 {{memberIndent}}    {
 {{memberIndent}}        return HostResourceManager?.GetString(name, Culture) ?? ResourceManager.GetString(name, Culture) ?? name;
 {{memberIndent}}    }
-{{memberIndent}}    catch { }
+{{memberIndent}}    catch(global::System.Resources.MissingManifestResourceException) { }
 {{memberIndent}}
 {{memberIndent}}    return ResourceManager.GetString(name, Culture) ?? name;
 {{memberIndent}}}
