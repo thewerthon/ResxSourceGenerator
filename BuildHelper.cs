@@ -75,7 +75,7 @@ internal static class BuildHelper
 		ResourceInformation resourceInformation = resourceCollection.BaseInformation;
 
 		GenerateNamespaceStartAndEnd(
-			resourceInformation.Namespace,
+			resourceInformation.Settings.CustomNamespace,
 			out var namespaceStart,
 			out var classIndent,
 			out var memberIndent,
@@ -171,7 +171,9 @@ internal static class BuildHelper
 {{memberIndent}}
 {{memberIndent}}    if (hostAssembly.GetManifestResourceNames().Contains(hostResourceBaseName + ".resources"))
 {{memberIndent}}    {
-{{memberIndent}}        return new global::System.Resources.ResourceManager(hostResourceBaseName, hostAssembly);
+{{memberIndent}}        var hostResourceManager = new global::System.Resources.ResourceManager(hostResourceBaseName, hostAssembly);
+{{memberIndent}}        if (hostResourceManager.GetResourceSet(global::System.Globalization.CultureInfo.InvariantCulture, true, true) == null) hostResourceManager = null;
+{{memberIndent}}        return hostResourceManager;
 {{memberIndent}}    }
 {{memberIndent}}
 {{memberIndent}}    return null;
@@ -258,6 +260,7 @@ internal static class BuildHelper
 // - DefaultLang: {resourceInformation.Settings.DefaultLang ?? "Default"}
 // - RelativeDir: {resourceInformation.Settings.RelativeDir ?? "<null>"}
 // - RootNamespace: {resourceInformation.Settings.RootNamespace ?? resourceInformation.Namespace ?? "<null>"}
+// - CustomNamespace: {resourceInformation.Settings.CustomNamespace ?? resourceInformation.Namespace ?? "<null>"}
 // - EmitFormatMethods: {resourceInformation.Settings.EmitFormatMethods}
 //
 // Computed properties:

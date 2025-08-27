@@ -45,10 +45,13 @@ internal readonly record struct ConfigurationSettings
 	/// <summary>Optionally, a root namespace. Defaults to the Assembly name</summary>
 	public required string? RootNamespace { get; init; }
 
+	/// <summary>Optionally, a custom namespace. Defaults to <see cref="ResourceInformation.Namespace"/>.</summary>
+	public required string? CustomNamespace { get; init; }
+
 	/// <summary>Optionally, a default directory</summary>
 	public required string? RelativeDir { get; init; }
 
-	/// <summary>Optionally, a <c>namespace.type</c> name for the generated Resources accessor class. </summary>
+	/// <summary>Optionally, a <c>Namespace.Type</c> name for the generated Resources accessor class. </summary>
 	public required string? ClassName { get; init; }
 
 	/// <summary>Optionally, the culture of the default resource file. </summary>

@@ -136,6 +136,7 @@ internal sealed class CSharpResxSourceGenerator : IIncrementalGenerator
 		var relativeDir = options.GetValue("build_metadata.EmbeddedResource.RelativeDir");
 		var className = options.GetValue("build_metadata.EmbeddedResource.ClassName");
 		var defaultLang = options.GetValue("build_metadata.EmbeddedResource.DefaultLang");
+		var customNamespace = options.GetValue("build_metadata.EmbeddedResource.CustomNamespace");
 		var emitFormatMethods = options.GetBoolValue("build_metadata.EmbeddedResource.EmitFormatMethods") ?? true;
 		var publicResource = options.GetBoolValue("build_metadata.EmbeddedResource.Public") ?? true;
 
@@ -165,6 +166,7 @@ internal sealed class CSharpResxSourceGenerator : IIncrementalGenerator
 					RelativeDir = relativeDir,
 					ClassName = string.IsNullOrEmpty(className) ? computedClassName : className,
 					DefaultLang = string.IsNullOrEmpty(defaultLang) ? "Default" : defaultLang,
+					CustomNamespace = string.IsNullOrEmpty(customNamespace) ? computedNamespaceName : customNamespace,
 					EmitDebugInformation = emitDebugInformation,
 					EmitFormatMethods = emitFormatMethods,
 					Public = publicResource,
