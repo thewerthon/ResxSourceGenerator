@@ -1,8 +1,8 @@
 <Project>
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <WarningsAsErrors>Nullable;CS9124</WarningsAsErrors>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<WarningsAsErrors>Nullable;CS9124</WarningsAsErrors>
+	</PropertyGroup>
 </Project>
