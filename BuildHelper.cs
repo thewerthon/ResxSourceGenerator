@@ -166,12 +166,12 @@ internal static class BuildHelper
 
 {{memberIndent}}private static readonly global::System.Lazy<global::System.Resources.ResourceManager?> hostResourceManagerLazy = new global::System.Lazy<global::System.Resources.ResourceManager?>(() =>
 {{memberIndent}}{
+{{memberIndent}}    var resourceName = "{{resourceInformation.ResourceName}}";
 {{memberIndent}}    var hostAssembly = global::System.Reflection.Assembly.GetEntryAssembly() ?? global::System.Reflection.Assembly.GetExecutingAssembly();
-{{memberIndent}}    var hostResourceBaseName = hostAssembly.GetName().Name + ".{{resourceInformation.Settings.RelativeDir?.TrimEnd('\\') ?? "Resources"}}.{{resourceInformation.ResourceName}}";
 {{memberIndent}}
-{{memberIndent}}    if (hostAssembly.GetManifestResourceNames().Contains(hostResourceBaseName + ".resources"))
+{{memberIndent}}    if (hostAssembly.GetManifestResourceNames().Contains(resourceName + ".resources"))
 {{memberIndent}}    {
-{{memberIndent}}        var hostResourceManager = new global::System.Resources.ResourceManager(hostResourceBaseName, hostAssembly);
+{{memberIndent}}        var hostResourceManager = new global::System.Resources.ResourceManager(resourceName, hostAssembly);
 {{memberIndent}}        if (hostResourceManager.GetResourceSet(global::System.Globalization.CultureInfo.InvariantCulture, true, true) == null) hostResourceManager = null;
 {{memberIndent}}        return hostResourceManager;
 {{memberIndent}}    }
